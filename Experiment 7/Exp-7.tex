@@ -1,0 +1,243 @@
+\documentclass[12pt, a4 paper]{article}
+% Set target color model to RGB
+\usepackage[inner=2cm,outer=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{latexsym}           % math symbols that were omitted in latex2e
+\usepackage{amsbsy}             % bold greek defs
+\usepackage{amsmath,graphicx}
+\usepackage{bbm}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\usepackage{graphics}
+\usepackage{acronym}
+\usepackage{longtable}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{cite}
+\usepackage{array}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb}
+\usepackage{wasysym,url}
+\usepackage{fixltx2e,amsmath}
+\usepackage{setspace,float}
+\usepackage{color}
+\usepackage{cases,bm}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{mathtools,cuted}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{sectsty}
+\usepackage{subfigure}
+\usepackage{amssymb}
+\DontPrintSemicolon
+
+
+\input{macros.tex}
+
+\linespread{1.3}
+
+\setlength{\intextsep}{20pt} % Vertical space above & below [h] floats
+\setlength{\textfloatsep}{20pt} % Vertical space below (above) [t] ([b]) floats
+\setlength{\abovecaptionskip}{10pt}
+\setlength{\belowcaptionskip}{10pt}
+
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\Ex}{\mathbb{E}}
+\newcommand{\TT}{\mathsf{T}}
+\newcommand{\HH}{\mathsf{H}}
+
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+
+\chapterfont{\fontfamily{lmss}\selectfont}
+\sectionfont{\fontfamily{lmss}\selectfont}
+\subsectionfont{\fontfamily{lmss}\selectfont}
+
+\begin{document}
+\homework{7: Experiment}{}
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\section{Solution}
+\label{sec:some_label}
+
+ $\alpha = 1 + mod(x, 3)$ where $x$ is the last three digits of roll number. Since $x = 162$,
+\begin{equation*}
+ \begin{split}
+     \alpha &= 1 + mod(162, 3)\\
+     \therefore \alpha &= 1\\
+ \end{split}
+\end{equation*}
+
+\problem{Question1:Window Functions}\\
+
+\subproblem{Subproblem 1}
+ Window functions.
+\solution
+
+\textbf{Rectangular Window - }The (zero-centered) rectangular window may be defined by:
+$$\displaystyle w_R(n) \isdef \left\{ \begin{array}{ll} 1, & -\frac{M-1}{2} \leq n \leq \frac{M-1}{2} \\ 0, & \mbox{otherwise} \\ \end{array} \right.$$
+
+where $ M$ is the window length in samples (assumed odd for now). A plot of the rectangular window appears in Fig.3.1 for length $ M=21$ . It is sometimes convenient to define windows so that their dc gain is 1, in which case we would multiply the definition above by $ 1/M$ .
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_6_1.png}
+    \end{wrapfigure}
+\end{center}
+
+\textbf{Hanning Window - }The Hann function of length L is used to perform Hann smoothing is named after the Austrian meteorologist Julius von Hann. It is a window function given by:
+
+$${\displaystyle w_{0}(x)\triangleq \left\{{\begin{array}{ccl}{\tfrac {1}{2}}\left(1+\cos \left({\frac {2\pi x}{L}}\right)\right)=\cos ^{2}\left({\frac {\pi x}{L}}\right),\quad &\left|x\right|\leq L/2\\0,\quad &\left|x\right|>L/2\end{array}}\right\}.}$$
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_6_2.png}
+    \end{wrapfigure}
+\end{center}
+
+\textbf{Hamming Window - } The Hamming window is an extension of the Hann window in the sense that it is a raised cosine window of the form:
+
+$$w(k)=\sum_{m=0}^{M} a_{m} \cos \left(\frac{2 \pi m k}{N-1}\right)$$
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_6_3.png}
+    \end{wrapfigure}
+\end{center}
+
+\subproblem{Subproblem 2}
+
+Plot of spectrum of the window using Hanning window for different window lengths
+\solution
+
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_8_0.png}
+    \end{wrapfigure}
+\end{center}
+
+\problem{Question2:FIR Filter Design}\\
+
+Low pass FIR filter using rectangular and Hanning window with a cutoff frequency of $w_c = \frac{\pi}{2} rad/sample$. Window length is 21.
+
+\subproblem{Subproblem 1}
+Plot of impulse response of the two filters.
+\solution
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_10_0.png}
+    \end{wrapfigure}
+\end{center}
+
+\subproblem{Subproblem 2}
+Bode analysis of the rectangular and hanning window.
+
+\solution
+
+Bode Plot of the FIR low pass filter using the rectangular window
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_12_0.png}
+    \end{wrapfigure}
+\end{center}
+
+Bode Plot of the FIR low pass filter using the hanning window 
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_13_0.png}
+    \end{wrapfigure}
+\end{center}
+
+On comparing the two bode plots, it can be observed that the stop band attenuation of the hanning window is greater than that of the rectangular window. But on the other hand, the transition width of hanning window is larger than rectangular window.
+
+\problem{Question 3:Filtering using FIR Filters}\\
+
+Plot of the spectrogram of the $instru1.wav$
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.55]{output_17_1.png}
+    \end{wrapfigure}
+\end{center}
+
+From the spectrogram , it is found that the fundamental frequency of the audio track is 275.625. So in order to remove the noise (all other frequency), we'll be using a bandpass filter.
+
+To design a FIR band pass filter capable of extracting/filtering out the fundamental peak we use the scpipy inbuilt function $scipy.signal.firwin$ with the edges as 100Hz and 300Hz. 
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_19_1.png}
+    \end{wrapfigure}
+\end{center}
+
+The spectrogram of the obtained signal after passing the signal through the signal
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.5]{output_21_1.png}
+    \end{wrapfigure}
+\end{center}
+
+\problem{Ouestion 4}\\
+
+\solution
+
+The window method for digital filter design is fast, convenient, and robust, but generally suboptimal. It is easily understood in terms of the convolution theorem for Fourier transforms, making it instructive to study after the Fourier theorems and windows for spectrum analysis. 
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.4]{output_26_0.png}
+    \end{wrapfigure}
+\end{center}
+
+
+\begin{center}
+    \begin{wrapfigure}
+    \centering
+    \includegraphics[scale=0.4]{output_27_0.png}
+    \end{wrapfigure}
+\end{center}
+
+When comparing the two bode charts, it can be seen that the hanning window's stop band attenuation is larger than the rectangular window's. However, the transition width of a hanning window is greater than that of a rectangular window.
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\appendix
+\section{Code Repositories}
+Refrain from including any or all code in this document. Upload codes to your repository and include the links to executed nbviewer files here as -- The codes to reproduce the results can be found in the GitHub repository \url{https://github.com/TanmayRanaware/Digital-Signal-Processing-Exp-7}.
+
+\end{document}
+
